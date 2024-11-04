@@ -10,6 +10,8 @@ import{calculateSizes} from '../constants/index'
 import ReactLogo from "../components/ReactLogo";
 import Cube from "../components/Cube";
 import Rings from "../components/Rings";
+import HeroCamera from "../components/HeroCamera";
+import Button from "../components/Button";
 const Hero = () => {
   const isSmall = useMediaQuery({
     maxWidth: 440,
@@ -74,6 +76,9 @@ const Hero = () => {
         <Canvas className="w-full h-full lg:mt-20 md:mt-20 sm:mt-20">
           <Suspense fallback={<CanvasLoader />}>
             <PerspectiveCamera makeDefault position={[0, 0, 30]} />
+            <HeroCamera isMobile={isMobile}>
+
+            
             <HackerRoom
               scale={sizes.deskScale}
               position={sizes.deskPosition}
@@ -85,6 +90,7 @@ const Hero = () => {
               // rotation={[x.rotationX,x.rotationY,x.rotationZ]}
               // scale={[x.scale,x.scale,x.scale]
             />
+            </HeroCamera> 
             <group>
               <Target position={sizes.targetPosition} scale={sizes.targetScale}/>
               <ReactLogo />
@@ -95,6 +101,11 @@ const Hero = () => {
             <directionalLight position={[10, 10, 10]} intensity={0.5} />
           </Suspense>
         </Canvas>
+      </div>
+      <div className={`absolute ${ isMobile?"-bottom-4":"-bottom-40"}  left-0 right-0 w-full z-10 c-space`}>
+          <a href="#contact" className="w-fit">
+            <Button name="Let's work together" isBeam containerClass="sm:w-fit w-full sm:min-w-96 mt-20"/>
+          </a>
       </div>
     </section>
   );

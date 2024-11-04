@@ -1,3 +1,4 @@
+import About from "./sections/About";
 import Hero from "./sections/Hero";
 import Navbar from "./sections/Navbar";
 
@@ -7,6 +8,7 @@ const App = () => {
       <h1 className=" text-2xl text-white ">
         <Navbar />
         <Hero />
+        <About/>
       </h1>
     </main>
   );
